@@ -1,0 +1,1204 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>购物车</title>
+    <!--给网页添加标题前的小图标-->
+    <link rel="icon" href="img/favicon.ico" />
+    
+    <style>
+		
+        #demo{
+         /* width: 534px;
+         height: 376px; */
+         width: 100%;
+         height:100%;;
+         margin: 0 auto;
+         position: fixed;
+         /* top: 20%;
+         left: 30%; */
+         text-align: right;
+         display: none;
+         z-index: 33;
+        }
+        .dompan{
+        color: rgb(233, 227, 227);
+        font-size: 20px;
+        position: absolute;
+        right:10px;
+        top:  3px;
+        cursor: pointer;
+        z-index: 55;
+        }
+
+        .iflo{
+         /* width: 539px;
+         height: 377px; */
+         width: 100%;
+         height:100%;
+         border-radius: 5px;
+         position: relative;
+         /* top: 20%;
+         left: 30%; */
+        }		
+
+
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .f-pr {
+        position: relative;
+        zoom: 1;
+        width: 1100px;
+        margin: 0 auto;
+      }
+      .header {
+        height: 73px;
+      }
+      .header .center {
+        height: 73px;
+      }
+      .f-f1 {
+        float: left;
+      }
+      #danjia1,#danjia2,#danjia3 {
+        color: #333;
+      }
+      .header .center .logo {
+        width: 290px;
+        height: 70px;
+        background: url("img/modules.png") 0 -48px;
+        cursor: pointer;
+      }
+      .center .searchBox {
+        width: 300px;
+        height: 70px;
+        margin-left: 334px;
+      }
+      .center .searchBox .searchbox {
+        width: 300px;
+        height: 69px;
+        padding-top: 1px;
+      }
+      .searchbox .searchtext {
+        width: 100%;
+        height: 38px;
+        margin-top: 16px;
+        background: url("img/modules.png") 0 0;
+      }
+      .searchbox .searchtext #search {
+        border: none;
+        outline: none;
+        margin: 11px 30px;
+      }
+      .center .shopcar {
+        position: relative;
+        width: 36px;
+        height: 36px;
+        margin: 17px 0 0 41px;
+        background: url("img/modules.png") -110px -159px;
+        cursor: pointer;
+      }
+      .center .shopcar .carnum {
+        width: 18px;
+        height: 18px;
+        line-height: 18px;
+        text-align: center;
+        color: #fff;
+        background: url("img/modules.png") -156px -158px;
+        position: absolute;
+        top: -8px;
+        left: 26px;
+      }
+      .center .user {
+        width: 62px;
+        height: 36px;
+        line-height: 36px;
+        margin: 15px 0 0 37px;
+        cursor: pointer;
+        text-align: center;
+      }
+      .fengexian {
+        width: 100%;
+        height: 3px;
+        bottom: 0;
+        background: url("img/border.png") repeat-x;
+      }
+      .root {
+        min-height: 800px;
+      }
+      .g-bd {
+        padding-bottom: 160px;
+        width: 1100px;
+        min-height: 750px;
+        margin: 0 auto;
+      }
+      .m-bread {
+        margin-bottom: 0;
+        min-height: 30px;
+        border-bottom: 1px solid #333;
+        padding-left: 0;
+        padding-bottom: 18px;
+        padding-top: 22px;
+      }
+      .m-bread .block {
+        font-size: 18px;
+        font-weight: 600;
+      }
+      .g-amin {
+        width: 100%;
+        margin: 0;
+      }
+      .cart .carthead {
+        width: 100%;
+        height: 66px;
+        line-height: 66px;
+        font-size: 14px;
+        color: #999;
+      }
+      .carthead .check {
+        height: 66px;
+      }
+      .checkall {
+        position: relative;
+        display: inline-block;
+        margin: 20px;
+        width: 22px;
+        height: 22px;
+        cursor: pointer;
+        
+      }
+      .coverwrap {
+        width: 100px;
+        color: #333;
+      }
+      .cnt .product {
+        width: 404px;
+      }
+      .cnt .pri1 {
+        width: 116px;
+      }
+      .f-tc {
+        text-align: center;
+      }
+      .cnt .num {
+        width: 108px;
+        margin: 0 79px 0 42px;
+      }
+      .cnt .pri2 {
+        width: 110px;
+      }
+      input {
+        outline: none;
+      }
+      ul {
+        list-style: none;
+      }
+      a {
+        text-decoration: none;
+        color: #333;
+        cursor: pointer;
+      }
+      .product a:hover {
+        text-decoration: underline;
+        color: #333;
+      } 
+      .g-main ul {
+        border: 1px solid rgba(0, 0, 0, 0.1);
+      }
+      .g-main ul li {
+        width: 100%;
+        height: 117px;
+        overflow: hidden;
+      }
+      .g-main ul li.first {
+        width: 100%;
+        height: 40px;
+        line-height: 40px;
+        overflow: hidden;
+        background: url(img/bgg.png) repeat-x;
+      }
+      .g-main .product {
+        width: 404px;
+      }
+      .g-main ul li.first .product {
+        width: 404px;
+        margin-left: 60px;
+        color: #999;
+      }
+      .s-fcTheme {
+        color: #d33a31;
+      } 
+      em, i {
+        font-style: normal;
+        text-align: left;
+        font-size: inherit;
+      }
+      .bottom .paybtn {
+        width: 160px;
+        height: 50px;
+        line-height: 50px;
+        margin-left: 30px;
+        font-size: 16px;
+        background-color: #d33a31;
+        color: #fff;
+        text-align: center;
+        cursor: pointer;
+      }
+      .bottom .s-fc4 {
+        color: #999;
+      }
+      .bottom .s-fc1 {
+        color: #333;
+      }
+      .f-fs20 {
+        font-size: 20px;
+      }
+      .f-fr {
+        float: right;
+      }
+      .f-myf {
+        margin-right: 20px;
+        color: #333;
+      }
+      .f-myf .txt {
+        color: #333;
+        font-weight: 500;
+      }
+      .f-fs1 {
+        font-size: 14px;
+      }
+      .g-main ul span {
+        color: #d33a31;
+      }
+      .f-myf .icon {
+        width: 46px;
+        height: 21px;
+        background: url(img/cart.png) 0 -35px;
+        margin-top: 9px;
+        margin-right: 10px;
+      }
+      .g-main  #ckAll{
+        width: 40px;
+        height: 20px;
+        position: absolute;
+        top: 0;
+        left: -10px;
+      }
+      .g-main .check .ckbox {
+        position: relative;
+        top: 50px;
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        margin: 0 20px;
+        cursor: pointer;
+        
+      }
+      .g-main .cnt {
+        width: 1036px;
+      }
+      .g-main .coverwrap {
+        width: 100px;
+      }
+      .cnt img {
+        width: 80px;
+        height: 80px;
+        margin-top: 19px;
+        background-color: #f5f5f5;
+      }
+      .cnt .msg {
+        margin: 38px 66px 0 0;
+      }
+      .cnt .msg .tit {
+        width: 340px;
+      }
+      .cnt .msg .tit:hover {
+        text-decoration: underline;
+        color: #333;
+      }
+      .cnt .sku {
+        width: 340px;
+        margin-top: 8px;
+        color: #999;
+      }
+      .cnt .price {
+        width: 116px;
+        height: 117px;
+        line-height: 117px;
+      }
+      .f-thide, .f-thide2, .f-thide3, .f-thide4 {
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .f-thide {
+        white-space: nowrap;
+      }
+      .cnt .ctrl {
+        top: 46px;
+        width: 133px;
+        height: 26px;
+        margin: -5px 49px 0 42px;
+        position: relative;
+        zoom: 1;
+      }
+      .u-counter {
+        width: 132px;
+        height: 30px;
+        border: 1px solid #e5e5e5;
+        border-left: none;
+      }
+      .u-counter .btn {
+        float: left;
+        width: 34px;
+        height: 30px;
+        border-left: 1px solid #e5e5e5;
+      }
+      .u-icn-27 {
+        width: 28px;
+        height: 28px;
+        background: url("img/icon.png") -38px -534px no-repeat;
+      }
+      .u-icn-28 {
+        width: 28px;
+        height: 28px;
+        background: url("img/icon.png") 0px -534px no-repeat;
+      }
+      .u-counter .btn i {
+        position: relative;
+        left: 3px;
+        top: 1px;
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+      .u-counter .btn-dis i {
+        opacity: 0.3;
+      }
+      .u-counter .tot {
+        float: left;
+        width: 59px;
+        height: 30px;
+        border-left: 1px solid #e5e5e5;
+      }
+      .u-counter .tot input {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        border: none;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+      }
+      .cnt .price {
+        width: 116px;
+        height: 117px;
+        line-height: 117px;
+      }
+      .cnt .line {
+        color: #d33a31;
+      }
+      .cnt .delete {
+        position: relative;
+        z-index: 99;
+        top: 5px;
+        height: 10px;
+        width: 10px;
+        margin: 50px 60px 0 0;
+        background: url("img/cha.png");
+        cursor: pointer;
+      }
+      ul li.bottom {
+        width: 100%;
+        height: 50px;
+        border-top: 1px solid #f2f2f2;
+        overflow: hidden;
+        line-height: 50px;
+      }
+      .s-fc4, a.s-fc4:hover {
+        color: #999;
+      }
+
+      .mid-border .mid-txt {
+        display: inline-block;
+        width: 100%;
+        margin-top: 50px;
+        line-height: 60px;
+        font-size: 18px;
+        font-weight: 600;
+        border-bottom: 1px solid #333;
+      }
+      .product .list {
+        width: 100%;
+        height: auto;
+        margin-top: 20px;
+      }
+      .product .list li {
+        float: left;
+        position: relative;
+        width: 263px;
+        height: 382px;
+        padding-right: 16px;
+      }
+      
+      .product .cover .spec {
+        width: 60px;
+        height: 60px;
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        background-color: #d33a31;
+        border-radius: 50%;
+        color: #fff;
+      }
+      .product .list a {
+        position: relative;
+        zoom: 1;
+      }
+      .product .cover img {
+        width: 263px;
+        height: 263px;
+        display: block;
+        background-color: #f9f9f9;
+      }
+      .product .cover {
+        width: 263px;
+        height: 263px;
+        background-color: #ccc;
+        cursor: pointer;
+      }
+      .product .cover .spec .orgin {
+        display: block;
+        position: absolute;
+        top: 10px;
+        left: 0px;
+        width: 100%;
+        text-align: center;
+        font-size: 15px;
+      }
+      .product .cover .spec .cut {
+        display: block;
+        position: absolute;
+        top: 26px;
+        left: 0px;
+        width: 100%;
+        text-align: center;
+        font-size: 13px;
+        color: #ccc;
+      }
+      .product .cnt {
+        margin-top: 10px;
+      }
+      .f-tc {
+        text-align: center;
+      }
+      .product .cnt h3 {
+        font-size: 14px;
+        line-height: 18px;
+        font-weight: normal;
+        color: #333;
+      }
+      .f-thide2 {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+      }
+      .product .tag {
+        overflow: hidden;
+        box-sizing: border-box;
+        line-height: 19px;
+        padding: 0 3px;
+        border-radius: 1px;
+        color: #d74d45;
+        font-size: 12px;
+        border: 1px solid #d74d45;
+        text-align: left;
+      }
+      .product .cnt .txt {
+        font-size: 16px;
+        color: #d33a31; 
+      }
+      .product .cnt p {
+        padding-top: 4px;
+      }
+      #m2top {
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        margin-left: 570px;
+        margin-top: -138px;
+      }
+      .m-wrap {
+        width: 60px;
+        height: auto;
+        border: 1px solid rgba(0, 0, 0, 0.4);
+      }
+      .m-wrap .box {
+        display: block;
+        height: 58px;
+        border: 1px solid transparent;
+        border-bottom: 1px solid #e5e5e5;
+        cursor: pointer;
+      }
+      .m-wrap .box span {
+        text-align: center;
+        font-size: 12px;
+        display: block;
+        margin-top: 15px;
+        line-height: 1.5;
+        color: #666666;
+      }
+      .m-wrap .box span i {
+        width: 21px;
+        height: 21px;
+        display: block;
+        background: url("img/totop.png") 0 -100px;
+        margin-left: 18px;
+      }
+      .back a{
+        display: block;
+        height: 35px;
+        border: 0;
+        background: url("img/totop.png") -70px 0;
+      }
+      .footer {
+        background-color: #F2F2F2;
+        width: 100%;
+        height: 160px;
+        margin-top: 550px;
+      }
+      .footermain {
+        width: 1100px;
+        margin: 0 auto;
+      }
+      .footermain .copyright {
+        float: left;
+        width: 590px;
+        padding-top: 22px;
+        line-height: 24px;
+      }
+      p {
+        display: block;
+        margin-block-start: 1em;
+        margin-block-end: 1em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+        margin: 0;
+      }
+      .copyright p {
+        color: #999;
+        font-size: 12px;
+      }
+      p.details {
+        color: #666;
+      }
+      .footer .copyright a {
+        color: #999;
+      }
+      .footermain .enter {
+        width: 360px;
+        margin-top: 30px;
+      }
+      .footermain .enter .logo {
+        float: left;
+        width: 60px;
+        height: 70px;
+        margin-left: 30px;
+        
+      }
+      .enter .logo-musician {
+        margin-left: 0;
+        background: url("img/foot_enter.png") no-repeat -60px -77px;
+      }
+      .enter .logo-topic {
+        background: url("img/foot_enter.png") no-repeat 0 -80px;
+      }
+      .enter .logo-midea {
+        background: url("img/foot_enter.png") no-repeat 0 0;
+      }
+      .enter .logo-reward {
+        background: url("img/foot_enter.png") no-repeat -60px 0;
+      }
+    </style>
+
+    <!-- 导入jquery -->
+    <script src="js/jquery-1.8.2.js"></script>
+    <script src="js/common.js"></script>
+
+  </head>
+  <body>
+
+<!-- 登录注册 -->
+<div  id="demo"><span class="dompan">x</span>
+  <iframe class="iflo" src="../music/login/Login.html" frameborder="0"></iframe>
+</div>   
+
+    <!-- 顶部栏 -->
+    <div class="header f-pr">
+      <!-- 中间部分 -->
+      <div class="center f-pr">
+        <!-- 左侧logo -->
+        <div class="logo f-f1"></div>
+        <!-- 中间搜索部分 -->
+        <div class="searchBox f-f1">
+          <div class="searchbox">
+            <div class="searchtext">
+              <input type="text" name="" id="search" placeholder="i19真无线" />
+            </div>
+          </div>
+        </div>
+        <!-- 购物车图片 -->
+        <div class="shopcar f-f1">
+          <!-- 购物车右上物品数量 -->
+          <span class="carnum">3</span>
+        </div>
+        <div class="user f-f1" id="user">登录</div>
+      </div>
+    </div>
+    <div class="fengexian"></div>
+    <!-- 主体部分 -->
+    <div class="root">
+      <!-- 主体中间部分 -->
+      <div class="g-bd">
+        <div class="m-bread">
+          <div class="block">
+            <span>购物车</span>
+          </div>
+        </div>
+        <div class="g-main">
+          <!-- 购物车部分 -->
+          <div class="cart">
+            <div class="carthead">
+              <!-- 全选按钮 -->
+              <div class="checkall f-f1" id="checkall">
+                <input type="checkbox" name="" id="ckAll">
+              </div>
+              <div class="cnt f-f1">
+                <div class="coverwrap f-f1">全选</div>
+                <div class="product f-f1">商品</div>
+                <div class="pri1 f-f1 f-tc">金额</div>
+                <div class="num f-f1 f-tc">数量</div>
+                <div class="pri2 f-f1 f-tc">小计</div>
+                <div class="man f-f1">操作</div>
+              </div>
+            </div>
+            </div>
+
+            <!-- 购物车内部 -->
+            <ul id="uu">
+              <li class="first">
+                <div class="product f-f1">
+                  全部商品&nbsp;(&nbsp;<span class="carnum">3</span>&nbsp;)&nbsp;
+                </div>
+                <div class="f-fr f-myf">
+                  <div class="f-f1 icon">
+                    <i></i>
+                  </div>
+                  <div class="f-f1 txt">全场<span>免运费</span></div>
+                </div>
+              </li>
+              <!-- 第一行购物车商品 -->
+              <li class="f-cb">
+                <!-- 选择框 -->
+                <div class="check f-f1" id="check">
+                  <!-- 勾选商品框 -->
+                  <input type="checkbox" name="ckbox" id="ckbox1" class="ckbox">
+                </div>
+                <div class="cnt f-f1">
+                  <div class="coverwrap f-f1">
+                    <div class="cover f-bd2">
+                        <a target="_blank" href="https://music.163.com/store/product/detail?id=88449552">
+                        <img src="img/09.jpg">
+                        </a>
+                    </div>
+                  </div>
+                  <div class="msg f-f1">
+                    <a target="_blank" href="https://music.163.com/store/product/detail?id=88449552">
+                      <p class="tit f-thide">
+                        网易云音乐 2021年音乐人年历日历礼盒装（预售，12月中旬起发）
+                      </p>
+                      <p class="sku f-thide">黑金款+红银款 1份</p>
+                    </a>
+                  </div>
+                  <!-- 单价 -->
+                  <div  class="price f-f1" style="text-align: center;">
+                    ￥<span id="danjia1" class="danjia">299</span>
+                  </div>
+                  <div class="ctrl f-f1 f-tc">
+                    <div class="u-counter f-f1 number">
+                      <a href="#" class="btn btn-dis j-x">
+                        <!-- 减按钮 -->
+                        <i id="jian1" class="u-icn u-icn-27"></i>
+                      </a>
+                      <span class="tot">
+                        <!-- 单品购买数量value -->
+                        <input type="text" class="text f-fs1 j-x" id="amount1" value="1" >
+                      </span>
+                      <a href="#" class="btn btn-dis j-x">
+                        <!-- 加按钮 -->
+                        <i id="jia1" class="u-icn u-icn-28"></i>
+                      </a>
+                    </div>
+                  </div>
+                  <div  class="price line f-f1 f-tc">
+                      ￥<span id="xiaoji1" class="xiaoji">299</span>
+                  </div>
+                  <!-- 删除商品按钮 -->
+                  <div class="delete f-f1"></div>
+                </div>
+              </li>
+              <!-- 第二行购物车商品 -->
+              <li class="f-cb">
+                <!-- 选择框 -->
+                <div class="check f-f1" id="check">
+                  <input type="checkbox" name="ckbox" id="ckbox2" class="ckbox">
+                </div>
+                <div class="cnt f-f1">
+                  <div class="coverwrap f-f1">
+                    <div class="cover f-bd2">
+                        <a target="_blank" href="https://music.163.com/store/product/detail?id=17994022">
+                        <img src="img/10.jpg">
+                        </a>
+                    </div>
+                  </div>
+                  <div class="msg f-f1">
+                    <a target="_blank" href="https://music.163.com/store/product/detail?id=17994022">
+                      <p class="tit f-thide">
+                        H16 Pro 入耳检测开盖弹窗无线充电 蓝牙5.0真无线耳机 苹果安卓通用
+                      </p>
+                      <p class="sku f-thide">白色</p>
+                    </a>
+                  </div>
+                  <div  class="price f-f1" style="text-align: center;">
+                    ￥<span id="danjia2" class="danjia">229</span>
+                  </div>
+                  <div class="ctrl f-f1 f-tc">
+                    <div class="u-counter f-f1 number">
+                      <a data-action="down" href="javascript:;" class="btn btn-dis j-x">
+                        <i id="jian2" class="u-icn u-icn-27"></i>
+                      </a>
+                      <span class="tot">
+                        <input type="text" class="text f-fs1 j-x"  id="amount2" value="1" >
+                      </span>
+                      <a data-action="plus" href="javascript:;" class="btn btn-dis j-x">
+                        <i id="jia2" class="u-icn u-icn-28"></i>
+                      </a>
+                    </div>
+                  </div>
+                  <div  class="price line f-f1 f-tc">
+                      ￥<span id="xiaoji2" class="xiaoji">229</span>
+                  </div>
+                  <div class="delete f-f1"></div>
+                </div>
+              </li>
+              <!-- 第三行购物车物品 -->
+              <li class="f-cb">
+                <!-- 选择框 -->
+                <div class="check f-f1" id="check">
+                  <input type="checkbox" name="ckbox" id="ckbox3" class="ckbox">
+                </div>
+                <div class="cnt f-f1">
+                  <div class="coverwrap f-f1">
+                    <div class="cover f-bd2">
+                        <a target="_blank" href="https://music.163.com/store/product/detail?id=11703003">
+                        <img src="img/11.jpg">
+                        </a>
+                    </div>
+                  </div>
+                  <div class="msg f-f1">
+                    <a target="_blank" href="https://music.163.com/store/product/detail?id=11703003">
+                      <p class="tit f-thide">
+                        i9S蓝牙5.0真无线 双耳高清通话 苹果安卓通用
+                      </p>
+                      <p class="sku f-thide">白色</p>
+                    </a>
+                  </div>
+                  <div  class="price f-f1" style="text-align: center;">
+                    ￥<span id="danjia3" class="danjia">89</span>
+                  </div>
+                  <div class="ctrl f-f1 f-tc">
+                    <div class="u-counter f-f1 number">
+                      <a data-action="down" href="javascript:;" class="btn btn-dis j-x">
+                        <i id="jian3" class="u-icn u-icn-27"></i>
+                      </a>
+                      <span class="tot">
+                        <input type="text" class="text f-fs1 j-x" id="amount3" value="1" >
+                      </span>
+                      <a data-action="plus" href="javascript:;" class="btn btn-dis j-x">
+                        <i id="jia3" class="u-icn u-icn-28"></i>
+                      </a>
+                    </div>
+                  </div>
+                  <div  class="price line f-f1 f-tc">
+                      ￥<span id="xiaoji3" class="xiaoji">89</span>
+                  </div>
+                  <div class="delete f-f1"></div>
+                </div>
+              </li>
+              <!-- 购物车结算部分 -->
+              <li class="bottom" id="bottom" style="position: static; z-index: 1; bottom: 0px;">
+                <div class="f-cb s-fc4">
+                  <!-- 全选按钮 -->
+                  <!-- <div class="checkall f-f1" id="checkall">
+                    <input type="checkbox" name="" id="ckAll">
+                  </div> -->
+                  <div class="f-f1">
+                    <!-- <div class="coverwrap f-f1 s-fc333">全选</div> -->
+                    <div class="product f-f1">
+                      已选择
+                      <!-- 已选几件物品 -->
+                      <em class="s-fcTheme">0</em>
+                      件物品
+                    </div>
+                  </div>
+                  <!-- 结算按钮 -->
+                  <div class="paybtn f-fr">结算</div>
+                  <div class="f-fr">
+                    <span class="s-fc4">已享受免运费&nbsp;|&nbsp;</span>
+                    <span class="s-fc1">合计&nbsp;&nbsp;</span>
+                    <!-- 累计选择商品的总金额 -->
+                    <span class="f-fs20 s-fcTheme">
+                      ￥<em id="allamount">0</em>
+                    </span>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- 热门推荐 -->
+          <div class="mid-border">
+            <span class="mid-txt">热门推荐</span>
+          </div>
+          <!-- 商品部分 -->
+          <div class="product">
+            <ul class="list">
+
+              <li>
+                <div>
+                  <a class="cover f-pr" href="https://music.163.com/store/product/detail?id=11703003" target="_blank">
+                    <img src="img/01耳机.jpg" alt="" />
+                    <span class="spec f-pa">
+                      <span class="orgin f-pa">￥89</span>
+                      <span class="cut f-pa"><del>￥169</del></span>
+                    </span>
+                  </a>
+                  <div class="cnt f-tc">
+                    <h3 class="f-thide2">
+                      <span class="tag">用券减40</span>
+                      <a href="https://music.163.com/store/product/detail?id=11703003" target="_blank">i9S蓝牙5.0真无线 双耳高清通话 苹果安卓通用</a>
+                    </h3>
+                    <p class="txt f-thide">￥89</p>
+                  </div>
+                </div>
+              </li>
+
+              <li>
+                <div>
+                  <a class="cover f-pr" href="https://music.163.com/store/product/detail?id=88449552" target="_blank">
+                    <img src="img/02.jpg" alt="" />
+                    <span class="spec f-pa">
+                      <span class="orgin f-pa">￥168</span>
+                      <span class="cut f-pa"><del>￥2900</del></span>
+                    </span>
+                  </a>
+                  <div class="cnt f-tc">
+                    <h3 class="f-thide2">
+                      <span class="tag">特价</span>
+                      <a href="https://music.163.com/store/product/detail?id=88449552" target="_blank">网易云音乐 2021年音乐人年历日历礼盒装（预售，12月中旬起发）</a>
+                    </h3>
+                    <p class="txt f-thide">￥168</p>
+                  </div>
+                </div>
+              </li>
+
+              <li>
+                <div>
+                  <a class="cover f-pr" href="https://music.163.com/store/product/detail?id=88441400" target="_blank">
+                    <img src="img/03.jpg" alt="" />
+                    <span class="spec f-pa">
+                      <span class="orgin f-pa">￥229</span>
+                      <span class="cut f-pa"><del>￥229</del></span>
+                    </span>
+                  </a>
+                  <div class="cnt f-tc">
+                    <h3 class="f-thide2">
+                      <span class="tag">特价</span>
+                      <a href="https://music.163.com/store/product/detail?id=88441400" target="_blank">网易云音乐记忆回音系列黑白江湖圆领卫衣</a>
+                    </h3>
+                    <p class="txt f-thide">￥109</p>
+                  </div>
+                </div>
+              </li>
+
+              <li style="padding-right: 0;">
+                <div>
+                  <a class="cover f-pr" href="https://music.163.com/store/product/detail?id=17994022" target="_blank">
+                    <img src="img/04.jpg" alt="" />
+                    <span class="spec f-pa">
+                      <span class="orgin f-pa">￥229</span>
+                      <span class="cut f-pa"><del>￥299</del></span>
+                    </span>
+                  </a>
+                  <div class="cnt f-tc">
+                    <h3 class="f-thide2">
+                      <span class="tag">用券减150</span>
+                      <a href="https://music.163.com/store/product/detail?id=17994022" target="_blank">H16 Pro 入耳检测开盖弹窗无线充电 蓝牙5.0真无线耳机 苹果安卓通用</a>
+                    </h3>
+                    <p class="txt f-thide">￥229</p>
+                  </div>
+                </div>
+              </li>
+
+              <li>
+                <div>
+                  <a class="cover f-pr" href="https://music.163.com/store/product/detail?id=22078685" target="_blank">
+                    <img src="img/05.jpg" alt="" />
+                    <span class="spec f-pa">
+                      <span class="orgin f-pa">￥99</span>
+                      <span class="cut f-pa"><del>￥229</del></span>
+                    </span>
+                  </a>
+                  <div class="cnt f-tc">
+                    <h3 class="f-thide2">
+                      <span class="tag">特价</span>
+                      <a href="https://music.163.com/store/product/detail?id=22078685" target="_blank">H16 Pro 入耳检测开盖弹窗无线充电 蓝牙5.0真无线耳机 苹果安卓通用</a>
+                    </h3>
+                    <p class="txt f-thide">￥99</p>
+                  </div>
+                </div>
+              </li>
+
+              <li>
+                <div>
+                  <a class="cover f-pr" href="https://music.163.com/store/product/detail?id=22069695" target="_blank">
+                    <img src="img/06.jpg" alt="" />                 
+                  </a>
+                  <div class="cnt f-tc">
+                    <h3 class="f-thide2">
+                      <span class="tag">用券减45</span>
+                      <a href="https://music.163.com/store/product/detail?id=22069695" target="_blank">漫步者（EDIFIER）MINI-BUDS 真无线蓝牙5.0小巧入耳式手机音乐通话耳...</a>
+                    </h3>
+                    <p class="txt f-thide">￥199</p>
+                  </div>
+                </div>
+              </li>
+
+              <li>
+                <div>
+                  <a class="cover f-pr" href="https://music.163.com/store/product/detail?id=88444401" target="_blank">
+                    <img src="img/07.jpg" alt="" />
+                    <span class="spec f-pa">
+                      <span class="orgin f-pa">￥49</span>
+                      <span class="cut f-pa"><del>￥99</del></span>
+                    </span>
+                  </a>
+                  <div class="cnt f-tc">
+                    <h3 class="f-thide2">
+                      <span class="tag">特价</span>
+                      <a href="https://music.163.com/store/product/detail?id=88444401" target="_blank">网易云音乐音乐江湖不锈钢保温杯350ml</a>
+                    </h3>
+                    <p class="txt f-thide">￥49</p>
+                  </div>
+                </div>
+              </li>
+
+              <li style="padding-right: 0;">
+                <div>
+                  <a class="cover f-pr" href="https://music.163.com/store/product/detail?id=11728001" target="_blank">
+                    <img src="img/08.jpg" alt="" />
+                    <span class="spec f-pa">
+                      <span class="orgin f-pa">￥129</span>
+                      <span class="cut f-pa"><del>￥199</del></span>
+                    </span>
+                  </a>
+                  <div class="cnt f-tc">
+                    <h3 class="f-thide2">
+                      <span class="tag">用券减60</span>
+                      <a href="https://music.163.com/store/product/detail?id=11728001" target="_blank">i12真无线蓝牙耳机 智能触控 改名定位 双耳运动跑步 安卓苹果通用</a>
+                    </h3>
+                    <p class="txt f-thide">￥129</p>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <!-- 右侧返回顶部栏 -->
+          <div id="m2top">
+            <div class="m-wrap" id="m-top">
+                <div class="box">
+                  <span>查看<br>营业执照</span>
+                </div>
+                <div class="box">
+                  <span>100%<br>正品</span>
+                </div>
+                <div class="box">
+                  <span>七天无理<br>由退货</span>
+                </div>
+                <div class="box">
+                  <span><i></i>客服</span>
+                </div>
+                <div class="back">
+                  <a href="#top" class="totop"></a>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>    
+    <!-- 底部 -->
+    <div class="footer">
+      <div class="footermain">
+        <div class="wrap">
+          <div class="copyright">
+            <p>
+              <a href="//st.music.163.com/official-terms/service" target="_blank" class="s-fc4">服务条款</a>
+              <span class="line">|</span>
+              <a href="//st.music.163.com/official-terms/privacy" target="_blank" class="s-fc4">隐私政策</a>
+              <span class="line">|</span>
+              <a href="//st.music.163.com/official-terms/children" target="_blank" class="s-fc4">儿童隐私政策</a>
+              <span class="line">|</span>
+              <a href="//music.163.com/st/staticdeal/complaints.html" target="_blank" class="s-fc4">版权投诉指引</a>
+              <span class="line">|</span>
+              <a href="#">意见反馈</a>
+            </p>
+            <p class="details">网易公司版权所有©1997-2020&nbsp;&nbsp;杭州乐读科技有限公司运营：浙网文[2018] 3506-263号</p>
+            <p class="details">违法和不良信息举报电话：0571-89853516&nbsp;&nbsp;举报邮箱：ncm5990@163.com</p>
+            <p class="details">食品经营许可证&nbsp;出版物经营许可证&nbsp;营业执照&nbsp;网络食品交易第三方平台提供者信息备案: 浙网食A33010041</p>
+            <p class="details">粤B2-20090191-18&nbsp;举报邮箱：工业和信息化部备案管理系统网站</p>
+          </div>
+          <ul class="enter f-fr">
+            <li><a href="#" class="logo logo-musician"></a></li>
+            <li><a href="#" class="logo logo-topic"></a></li>
+            <li><a href="#" class="logo logo-midea"></a></li>
+            <li><a href="#" class="logo logo-reward"></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </body>
+
+<!-- js代码 -->
+<script>
+
+    //登陆注册界面
+    $("#user").click(function () {
+        $("#demo").css("display", "inline");
+    });
+    $(".dompan").click(function () {
+        $("#demo").css("display", "none");
+    });
+
+    //图片跳转商品界面
+    $(".header>.center>.logo").click(function () {
+        window.location.href="../网易云商城界面/网易云商城.html";
+        });
+
+
+  // jquery部分
+  $(function() {
+    // 点x 删除购物车里物品的操作
+    $(".delete").click(function() {
+        $(this).parent().parent().css("display","none");
+    });
+    /*全选全不选*/  
+    $("#ckAll").click(function(){
+    	$("#uu input").prop("checked",this.checked)
+    })
+    $("#uu input").click(function(){
+    	var $list = $("input[name='ckbox']");
+    	$("#ckAll").prop("checked",$list.length == $list.filter(":checked").length?true:false)
+    })
+  
+    // 加减商品数量操作
+    // 加减操作
+    var i = parseInt( $("#amount1").val());
+    $("#jian1").click(function(){
+    
+      if(i==1){
+        $("#amount1").val("1");
+      }else{
+        i -=1;
+      $("#amount1").val(i);
+      }
+    })
+    $("#jia1").click(function(){
+    
+      i += 1;
+      $("#amount1").val(i);
+    });
+
+    var j = parseInt( $("#amount2").val());
+    $("#jian2").click(function(){
+    
+      if(j==1){
+        $("#amount2").val("1");
+      }else{
+        j -=1;
+      $("#amount2").val(j);
+      }
+    })
+    $("#jia2").click(function(){
+    
+      j += 1;
+      $("#amount2").val(j);
+    });
+    
+    var k = parseInt( $("#amount3").val());
+    $("#jian3").click(function(){
+    
+      if(k==1){
+        $("#amount3").val("1");
+      }else{
+        k -=1;
+      $("#amount3").val(k);
+      }
+    })
+    $("#jia3").click(function(){
+    
+      k += 1;
+      $("#amount3").val(k);
+    });
+
+    // 计算小计价格及总价
+    setInterval(function(){
+    var m=0;
+     m = $("#amount1").val() * 299;
+     $("#xiaoji1").html(m);
+    var n=0;
+     n = $("#amount2").val() * 229;
+     $("#xiaoji2").html(n);
+    var q=0;
+     q = $("#amount3").val() * 89;
+     $("#xiaoji3").html(q);
+    
+    
+      // 商品总数
+    var carnum = parseInt( $("#amount1").val())+ parseInt( $("#amount2").val())+parseInt( $("#amount3").val());
+    $(".carnum").html(carnum);
+
+ 
+    // 已选择多少件物品及选择的物品总价 
+    var allNum = 0;
+    allNum = m + n + q;
+    $("#allamount").html(allNum);
+
+    
+    
+
+    
+    
+},1)
+
+});
+
+  
+</script>
+
+
+
+</html>

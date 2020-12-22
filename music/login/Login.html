@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录注册界面</title>
+    <style>
+        * {margin: 0; padding: 0;}
+        a{cursor: pointer;}
+        .lore {
+            width: 530px;
+            height: 372px;
+            margin: 0 auto;
+            border-radius: 5px;
+            position: fixed;
+            top: 20%;
+            left: 30%;
+        }
+        .login1 {
+            width: 530px;
+            height: 372px;
+            background: #fff;
+            margin: 0 auto;
+            position: relative;
+            border: 1px solid rgba(82, 82, 82, 0.356);
+            border-radius: 5px;
+        }
+        .top {
+            cursor: move;
+            position: relative;
+            top: 0;
+            width: 530px;
+            height: 39px;
+            background-color: rgb(49, 49, 49);
+        }
+
+        .pa {
+            position: absolute;
+            top: 5px;
+            color: rgb(247, 240, 240);
+            margin: 0 0 0 30px;
+            font-size: large;
+        }
+
+        .clo {
+            cursor: pointer;
+            width: 30px;
+            height: 39px;
+            float: right;
+            color: rgb(102, 101, 101);
+            margin: 0 0 0 30px;
+            font-size: 25px;
+        }
+
+        .main1 {
+            width: 528px;
+            height: 320px;
+            text-align: center;
+            display: none;
+        }
+
+        .m-lef {
+            width: 125px;
+            height: 220px;
+            float: left;
+            margin: 30px 10px 0 70px;
+        }
+
+        .ia {
+            width: 125px;
+            height: 220px;
+        }
+
+        .m-rig {
+            width: 200px;
+            height: 205px;
+            float: left;
+            text-align: center;
+            margin: 30px 0 0 30px;
+        }
+
+        .ib {
+            width: 138px;
+            height: 138px;
+            margin: 10px 0 10px;
+        }
+
+        .pb {
+            color: rgb(80, 79, 79);
+            font-size: 10px;
+            float: bottom;
+        }
+
+        .ab {
+            color: rgb(68, 68, 211);
+            font-weight: 800;
+        }
+
+        .ab:hover {
+            text-decoration: underline;
+        }
+
+        .pbt {
+            cursor: pointer;
+            width: 158px;
+            height: 28px;
+            padding: 5px;
+            text-align: center;
+            border: 1px solid black;
+            border-radius: 40px;
+            position: absolute;
+            bottom: 25px;
+            left: 170px;
+        }
+
+        .main2 {
+            width: 528px;
+            height: 320px;
+            text-align: center;
+            /* display: none; */
+        }
+
+        .dle {
+            margin: 30px 0 0 10px;
+            width: 300px;
+            height: 206px;
+            float: left;
+            border-right: 1px solid rgba(109, 109, 109, 0.603);
+        }
+
+        .dle img {
+            width: 224px;
+            height: 120px;
+        }
+
+        input {
+            display: inline-block;
+            width: 224px;
+            height: 31px;
+            margin: 10px 10px;
+            border-radius: 5px;
+        }
+
+        .btn1 {
+            cursor: pointer;
+            color: cornsilk;
+            background-color: rgb(71, 98, 248);
+        }
+        .btn2 {cursor: pointer;}
+
+        .dri {
+            width: 190px;
+            height: 222px;
+            float: right;
+            margin: 30px 0 0 10px;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        li {
+            text-align: left;
+            line-height: 200%;
+            position: relative;
+        }
+
+        li img {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+        }
+        li a {
+            color: black;
+            position: absolute;
+            display: inline-block;
+            text-decoration: none;
+            font-size: 13px;
+            top: 3px;
+            left: 43px;
+        }
+        li a:hover {
+            text-decoration: underline;
+        }
+
+        .pwy {
+            color: black;
+            position: absolute;
+            display: inline-block;
+            font-size: 13px;
+            top: 3px;
+            left: 43px;
+        }
+
+        .pwy:hover {
+            text-decoration: underline;
+        }
+
+        .mbto {
+            position: absolute;
+            width: 500px;
+            height: 16px;
+            bottom: 50px;
+            left: -50px;
+        }
+
+        #che {
+            width: 13px;
+            height: 13px;
+        }
+
+        .bsp {
+            height: 16px;
+            display: inline-bloc;
+            text-transform: lowercase;
+            font-size: 3px;
+        }
+
+        .bsp a {
+            text-decoration: none;
+            color: rgb(25, 84, 247);
+            height: 16px;
+            display: inline-block;
+            font-size: 1px;
+        }
+
+        .bsp a:hover {
+            text-decoration: underline;
+        }
+
+        .mar {
+            position: absolute;
+            width: 52px;
+            height: 52px;
+            bottom: 0;
+            right: 0;
+        }
+
+        .mar>img {
+            cursor: pointer;
+            width: 52px;
+            height: 52px;
+        }
+
+        .pho {
+            width: 528px;
+            height: 320px;
+            text-align: center;
+            display: none;
+        }
+
+        #mobile {
+            color: rgba(44, 43, 43, 0.514);
+            display: block;
+            margin: 20px auto 0;
+            border: 1px solid rgba(95, 95, 95, 0.404);
+        }
+
+        .pbot1 {
+            padding: 15px 0 0 10px;
+            color: rgb(25, 60, 214);
+            float: left;
+        }
+
+        .pbot2 {
+            padding: 15px 0 0 10px;
+            color: rgb(25, 60, 214);
+            float: right;
+        }
+        .forge{
+            width: 528px;
+            height: 290px;
+            text-align: center;
+            display: none;
+            }
+        .sp3 {
+            float: right;
+            margin: 30px 0 0;
+            font-size: 10px;
+        }
+        .bt5 {
+            margin: 20px 0 0 10px;
+            color: blanchedalmond;
+            border: 1px solid rgba(32, 32, 32, 0.596);
+            background-color: rgb(23, 99, 241);
+        }
+
+        .fne{
+            width: 528px;
+            height: 290px;
+            text-align: center;
+            display: none;
+        }
+        .fneo{
+            padding-top: 30px;
+            margin: 0 auto;
+            width: 220px;
+            height: 240px;
+            text-align: left;
+        }
+        .topp{
+            line-height: 25px;
+            font-size: 10px;
+        }
+        .topm{
+            line-height: 25px;
+            font-size: 10px;
+        }
+        .fenl>li{
+            float: left;
+        }
+        #tn{
+            display:inline-block;
+            width: 35px;
+            height:35px;
+            border: none;
+            border-bottom:2px solid rgba(36, 35, 35, 0.473);
+            text-align: center;
+
+        }
+        .fena{
+            color: rgb(14, 83, 231);
+            display:block;
+            float: right;
+            padding-right: 20px;
+        }
+        .fena:hover{
+            text-decoration: underline;
+        }
+        .fnbt{
+            background-color:rgb(76, 128, 240) ;
+            width: 180px;
+            color: cornsilk;
+           margin:20px 0 0 10px;
+           border: none;
+        }
+
+        .regi {
+            width: 528px;
+            height: 290px;
+            text-align: center;
+            display: none;
+        }
+
+        .main4 {
+            padding-top: 30px;
+            margin: 0 auto;
+            width: 220px;
+            height: 240px;
+            text-align: left;
+        }
+
+        #mobile2 {
+            color: rgba(44, 43, 43, 0.514);
+            display: block;
+            border: 1px solid rgba(95, 95, 95, 0.404);
+        }
+
+        #te2 {
+            color: rgba(44, 43, 43, 0.514);
+            display: block;
+            border: 1px solid rgba(95, 95, 95, 0.404);
+        }
+
+        .topp {
+            color: rgba(70, 69, 69, 0.781);
+        }
+
+        .topm {
+            color: rgba(70, 69, 69, 0.781);
+        }
+
+        .bt4 {
+            margin: 20px 0 0 10px;
+            color: blanchedalmond;
+            border: 1px solid rgba(32, 32, 32, 0.596);
+            background-color: rgb(23, 99, 241);
+        }
+
+        .btop2 {
+            width: 530px;
+            height: 20px;
+            border-top: 1px solid rgba(70, 70, 70, 0.404);
+        }
+
+        .pbot3 {
+            padding: 15px 0 0 10px;
+            color: rgb(25, 60, 214);
+            float: left;
+        }
+
+        .main3 {
+            width: 528px;
+            height: 320px;
+            text-align: center;
+            display: none;
+        }
+
+        .ode {
+            position: relative;
+            width: 220px;
+            height: 237px;
+            margin: 40px auto 0;
+        }
+
+        #te1 {
+            color: rgba(44, 43, 43, 0.514);
+            display: block;
+            margin: 20px auto 0;
+            border: 1px solid rgba(95, 95, 95, 0.404);
+        }
+
+        #che2 {
+            position: absolute;
+            display: inline-block;
+            width: 25px;
+            height: 16px;
+            left: 0;
+            margin: 30px 0 0;
+        }
+        .spc {
+            position: absolute;
+            margin-top: 30px;
+            left: 30px;
+            display: inline-block;
+            font-size: 10px;
+        }
+
+        .sp2 {
+            text-decoration: none;
+            color: #000;
+            float: right;
+            margin: 30px 0 0;
+            font-size: 10px;
+        }
+
+        .bt3 {
+            margin: 20px 0 0;
+            color: blanchedalmond;
+            border: 1px solid rgba(32, 32, 32, 0.596);
+            background-color: rgb(23, 99, 241);
+        }
+
+        .btop {
+            width: 530px;
+            height: 50px;
+            border-top: 1px solid rgba(70, 70, 70, 0.404);
+        }
+        .pbot {
+            padding: 15px 0 0 10px;
+            color: rgb(25, 60, 214);
+            float: left;
+        }
+    </style>
+</head>
+<body>
+    <!-- 主要边框 -->
+    <div class="lore" id="demo1">
+        <div class="login1">
+            <div class="top">
+                <span class="pa">登录</span>
+                <!-- <span class="clo" title="关闭窗体" id="cut">×</span> -->
+            </div>
+            <!-- 扫描登陆页面 -->
+            <div class="main1">
+                <div class="m-lef">
+                    <img src="../img/qr_guide.png" alt="" class="ia">
+                </div>
+                <div class="m-rig">
+                    <span>扫描登录</span>
+                    <img src="../img/qtcode.png" alt="" class="ib"><br>
+                    <p class="pb">使用<a class="ab" href="https://music.163.com/#/download">网易云音乐APP</a>扫码登录</p>
+                </div>
+                <a class="pbt">选择其他登录模式</a>
+            </div>
+            <!-- 其他登录界面 -->
+            <div class="main2">
+                <div class="dle">
+                    <img src="../img/tu1.png" alt="">
+                    <input class="btn1" type="button" value="手机号登录">
+                    <input class="btn2" type="button" value="注册">
+                </div>
+                <div class="dri">
+                    <ul>
+                        <li><img src="../img/weixn.jpg"><a id="weix"
+                                href="weixin.html">微信登录</a>
+                        </li>
+                        <li><img src="../img/qq.jpg"><a id="qqa"
+                                href="../login/qq.html">QQ登录</a>
+                        </li>
+                        <li><img src="../img/weibo.jpg"><a id="weib"
+                                href="https://login.sina.com.cn/signup/signin.php?r=https%3A%2F%2Fapi.weibo.com%2Foauth2%2Fauthorize%3Fclient_id%3D301575942%26response_type%3Dcode%26redirect_uri%3Dhttp%3A%2F%2Fmusic.163.com%2Fback%2Fweibo%26%26scope%3Dfriendships_groups_read%2Cstatuses_to_me_read%2Cfollow_app_official_microblog%26state%3DgYbptXRymH%26checkToken%3D9ca17ae2e6ffcda170e2e6ee97f760b8b300aff65385868bb3d45b939f9ebbb543f8a7af94e44eb8e88482db2af0feaec3b92afcb9ae82ef45aea68596d15b878f8ba3c44e8fae8290ec3cfb9d9ad5cf4fb1b5ee9e">微博登录</a>
+                        </li>
+                        <li class="wang"><img src="../img/wangyi.jpg"><span class="pwy">网易邮政账号登录</span></li>
+                    </ul>
+                </div>
+                <div class="mbto">
+                    <input type="checkbox" name="ch" id="che" display="inline">
+                    <label class="bsp">同意
+                        <a href="https://st.music.163.com/official-terms/service">《服务条款》</a>
+                        <a href="https://st.music.163.com/official-terms/privacy">《隐私政策》</a>
+                        <a href="https://st.music.163.com/official-terms/children">《儿童隐私政策》</a></label>
+                </div>
+                <div class="mar">
+                    <img src="../img/qicon.png" alt="">
+                </div>
+            </div>
+            <!-- 手机号登陆 -->
+            <div class="pho">
+                <div class="ode">
+                    <input style="width: 226px;" id="mobile" type="text" onkeyup="value=value.replace(/[^\d]/g,'')"
+                        maxlength=11 placeholder="请输入手机号">
+                    <input type="password" name="text" id="te1" placeholder="请输入密码">
+                    <input type="checkbox" name="che2" id="che2">
+                    <span class="spc">自动登录</span>
+                    <span class="sp3">忘记密码？</span>
+                    <input type="button" value="登录" class="bt3">
+                </div>
+                <div class="btop">
+                    <p class="pbot1">
+                        ＜ 其他方式登录</p>
+                            <p class="pbot2"> 没有帐号？免费注册 ></p>
+                </div>
+            </div>
+            <!-- 手机重设密码忘记密码 -->
+            <div class="forge">
+                <div class="main4">
+                    <span class="topp">手机号:</span>
+                    <input style="width: 226px;" id="mobile2" type="text" onkeyup="value=value.replace(/[^\d]/g,'')"
+                        maxlength=11 placeholder="请输入手机号">
+                    <span class="topm">密码:</span>
+                    <input type="password" name="text" id="te2" placeholder="设置登录密码，不少于8位">
+                    <input type="button" value="下一步" class="bt5">
+                </div>
+                <div class="btop2">
+                    <p class="pbot3">
+                        ＜ 返回登录</p>
+                </div>
+            </div>
+
+                <!-- 手机号注册 -->
+            <div class="regi">
+                <div class="main4">
+                    <span class="topp">手机号:</span>
+                    <input style="width: 226px;" id="mobile2" type="text" onkeyup="value=value.replace(/[^\d]/g,'')"
+                        maxlength=11 placeholder="请输入手机号">
+                    <span class="topm">密码:</span>
+                    <input type="password" name="text" id="te2" placeholder="设置登录密码，不少于8位">
+                    <input type="button" value="下一步" class="bt4">
+                </div>
+                <div class="btop2">
+                    <p class="pbot3">
+                        ＜ 返回登录</p>
+                </div>
+            </div>
+
+            <!-- 注册的下一步 -->
+            <div class="fne">
+                <div class="fneo">
+                    <p class="topp">你的手机号:<b>+86 187****2841</b></p>
+                    <p class="topm">为了安全，我们会给你发送短信验证码</p>
+                    <ul class="fenl">
+                        <li><input type="text" name="text" id="tn"></li>
+                        <li><input type="text" name="text" id="tn"></li>
+                        <li><input type="text" name="text" id="tn"></li>
+                        <li><input type="text" name="text" id="tn"></li>
+                    </ul>
+                    <a class="fena">重新发送</a>
+                    <input type="button" value="下一步" class="fnbt">
+                </div>
+                <div class="btop2">
+                    <p class="pbot3">
+                        ＜ 返回登录</p>
+                </div>
+            </div>
+
+            <div class="main3">
+                <div class="ode">
+                    <input type="text" name="text" id="te1" placeholder="请输入账户">
+                    <input type="password" name="text" id="te1" placeholder="请输入密码">
+                    <input type="checkbox" name="che2" id="che2">
+                    <span class="spc">自动登录</span>
+                    <a class="sp2" href="https://reg.163.com/naq/findPassword#/verifyAccount">忘记密码？</a>
+                    <input type="button" value="登录" class="bt3">
+                </div>
+                <div class="btop">
+                    <p class="pbot">
+                        ＜ 其他方式登录</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+<script src="../js/jquery-1.8.2.js"></script>
+<script>
+    $(".clo").click(function () {
+        $(".login1").css("display", "none");
+    });
+
+    //扫码登录转为其他登录
+    $(".pbt").click(function () {
+        $(".main1").css("display", "none");
+        $(".main2").css("display", "inline");
+    });
+    //其他登录转为网易账号登录
+    $(".wang").click(function () {
+        if (document.getElementById("che").checked==false){
+            alert("请勾选同意《服务条款》《隐私政策》《儿童隐私政策》");
+            document.getElementById("che").focus();
+            return false;}else{
+                $(".main2").css("display", "none");
+                $(".main3").css("display", "inline");
+                $(".pa").text("邮箱登录");
+                }
+    });
+    //其他登录转为手机号登录
+    $(".btn1").click(function () {
+        if (document.getElementById("che").checked==false){
+            alert("请勾选同意《服务条款》《隐私政策》《儿童隐私政策》");
+            document.getElementById("che").focus();
+            return false;}else{
+        $(".main2").css("display", "none");
+        $(".pho").css("display", "inline");
+        $(".pa").text("手机号登录");}
+    });
+    //其他登录转为注册
+    $(".btn2").click(function () {
+        if (document.getElementById("che").checked==false){
+            alert("请勾选同意《服务条款》《隐私政策》《儿童隐私政策》");
+            document.getElementById("che").focus();
+            return false;}else{
+        $(".main2").css("display", "none");
+        $(".regi").css("display", "inline");
+        $(".pa").text("手机号注册");}
+    });
+
+    //其他登录转为扫码登录
+    $(".mar").click(function () {
+        if (document.getElementById("che").checked==false){
+            alert("请勾选同意《服务条款》《隐私政策》《儿童隐私政策》");
+            document.getElementById("che").focus();
+            return false;}else{
+        $(".main2").css("display", "none");
+        $(".main1").css("display", "inline");}
+    });
+    
+    //其他界面微信、qq、微博登录
+    $("#weix").click(function () {
+        if (document.getElementById("che").checked==false){
+            alert("请勾选同意《服务条款》《隐私政策》《儿童隐私政策》");
+            document.getElementById("che").focus();
+            return false;}else{
+        return true;}
+    });
+    $("#qqa").click(function () {
+        if (document.getElementById("che").checked==false){
+            alert("请勾选同意《服务条款》《隐私政策》《儿童隐私政策》");
+            document.getElementById("che").focus();
+            return false;}else{
+        return true;}
+    });
+    $("#weib").click(function () {
+        if (document.getElementById("che").checked==false){
+            alert("请勾选同意《服务条款》《隐私政策》《儿童隐私政策》");
+            document.getElementById("che").focus();
+            return false;}else{
+        return true;}
+    });
+
+
+    //手机登录转为注册
+    $(".pbot2").click(function () {
+        $(".pho").css("display", "none");
+        $(".regi").css("display", "inline");
+        $(".pa").text("手机号注册");
+    });
+    //手机登录转为忘记密码
+    $(".sp3").click(function () {
+        $(".pho").css("display", "none");
+        $(".forge").css("display", "inline");
+        $(".pa").text("重设密码");
+    });
+    //忘记密码转为其他登录
+    $(".pbot3").click(function () {
+        $(".forge").css("display", "none");
+        $(".fne").css("display", "none");
+
+    });
+    //手机登录转为其他登录
+    $(".pbot1").click(function () {
+        $(".pho").css("display", "none");
+        $(".main2").css("display", "inline");
+        $(".pa").text("登录");
+    });
+
+    //注册转为其他登录
+    $(".pbot3").click(function () {
+        $(".regi").css("display", "none");
+        $(".main2").css("display", "inline");
+        $(".pa").text("登录");
+    });
+    //注册转为下一步
+    $(".bt4").click(function () {
+        $(".regi").css("display", "none");
+        $(".fne").css("display", "inline");
+        });
+    //重设密码转为下一步
+    $(".bt5").click(function () {
+        $(".forge").css("display", "none");
+        $(".fne").css("display", "inline");
+        });
+
+    //网易账号登录转为其他登录
+    $(".pbot").click(function () {
+        $(".main3").css("display", "none");
+        $(".pho").css("display", "none");
+        $(".main2").css("display", "block");
+        $(".pa").text("登录");
+    });
+
+
+    //整体框浮动，移动。
+    var demo = document.querySelector('#demo1');
+    var canMove = false
+    var x = 0, y = 0
+    demo.onmousedown = function (e) {    //鼠标按下
+        canMove = true
+        // console.log('down');  
+        //记录鼠标按下时鼠标与div的相对位置坐标
+        x = e.pageX - demo.offsetLeft
+        y = e.pageY - demo.offsetTop
+    }
+    window.onmouseup = function(){    //鼠标抬起
+        canMove = false
+        // console.log('up');    
+    }
+    window.onblur = function(){   //失去焦点
+        canMove = false
+    }
+    window.onmousemove = function (e) {  //鼠标移动
+        e.preventDefault();   //阻止默认行为，防止拖动文字有BUG
+        if (canMove) {
+            // console.log('move')
+            //移动后的位置坐标
+            var left = e.pageX - x
+            var top = e.pageY - y
+            if (left < 0) left = 0
+            if (top < 0) top = 0
+            //最大移动宽度 = 浏览器窗口宽度 - div自身宽度
+            var maxLeft = window.innerWidth - demo.offsetWidth
+            var maxTop = window.innerHeight - demo.offsetHeight
+            if (left > maxLeft) left = maxLeft
+            if (top > maxTop) top = maxTop
+            demo.style.left = left + 'px'
+            demo.style.top = top + 'px'
+        }
+    }
+</script>
+</html>

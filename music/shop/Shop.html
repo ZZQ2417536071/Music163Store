@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>购物车界面</title>
+    <script src="../js/jquery-1.8.2.js"></script>
+    <style>
+        .god{
+            display: block;
+            width: 15px;
+            height:15px;
+            background-color: cyan;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <span class="god">√</span>
+        <span class="rig" id="an"></span><span class="ron">x</span>
+        <span class="rig" id="an"></span><span class="ron">x</span>
+        <span class="rig" id="an"></span><span class="ron">x</span>
+    </div>
+</body>
+<script>
+// $(".god").click(function(){
+//     $(".rig").text("√");
+//     $(".god").text("√");
+// });
+var obj=document.getElementsByClassName("god");
+obj.onclick(function(){
+   if(obj.innerHTML=="√"){
+    document.getElementsByClassName("rig").innerHTML="√";
+} 
+});
+
+
+</script>
+</html>

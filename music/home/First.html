@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>首页</title>
+    <script src="../js/jquery-1.8.2.js"></script>
+    <style>
+        .fim{
+            width: 100%;
+            height: 480px;
+        }
+        .fma{
+            width: 1100px;
+            height: 480px;
+            margin: 0 auto;
+            overflow: hidden;
+            position: relative;
+            border: 1px solid red;
+        }
+        img{
+            width: 1100px;
+            height: 480px;
+            display: none;
+        }
+        ul{
+            list-style: circle;
+            z-index: 8;
+            position: absolute;
+            bottom: 0;
+            left: 500px;
+            
+        }
+        li{
+            font-size: 30px;
+            margin: 8px;
+            float: left;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="fim">
+        <div class="fma">
+        <img src="../img/1.jpg" alt="">
+        <img src="../img/2.jpg" alt="">
+        <img src="../img/3.jpg" alt="">
+        <img src="../img/4.jpg" alt="">
+        <img src="../img/5.jpg" alt="">
+        <img src="../img/6.jpg" alt="">
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+    </div>
+</body>
+<script>
+    $("li").click(function(){
+        $(this).parent().children().css("listStyle","circle");
+        $(this).css("listStyle","disc");
+        
+        });
+</script>
+</html>
